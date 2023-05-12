@@ -1,0 +1,17 @@
+.footer-text{
+    font-family: 'D-DIN Exp';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 9px;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: right;
+}
+.footer-div{
+    margin-right: 3rem;
+}
+footer{
+    display: flex;
+    justify-content: flex-end;
+}

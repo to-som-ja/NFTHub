@@ -1,0 +1,59 @@
+.hub {
+    position: absolute;
+    left: 93px;
+    width: calc(100% - 93px);
+    height: 100%;
+}
+
+.text {
+    font-family: 'D-DIN Exp';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 17px;
+    letter-spacing: 0.2em;
+}
+
+.main-div {
+    display: flex;
+    background-color: black;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100% - 57px);
+    ;
+}
+
+.main-div-login {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-div-button {
+    color: black;
+    background-color: white;
+    height: 4rem;
+    margin-bottom: 2rem;
+    border: 0;
+    width: 100%;
+}
+
+.main-div-p {
+    color: white;
+    font-weight: 400;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+}
+
+.main-div-h {
+    color: white;
+    font-size: 24px;
+    line-height: 26px;
+    
+}
+.main-div-text-box{
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 70%;
+}
