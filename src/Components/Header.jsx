@@ -1,7 +1,10 @@
 import React from "react";
 import "../CSS/Header.css"
+import { useWeb3React } from "@web3-react/core";
+import Close from "../Icons/close_4.svg";
 
 function Header() {
+  const {account, deactivate } = useWeb3React();
   return (
     <nav className="header-nav">
       <div className="header-left">
@@ -16,14 +19,17 @@ function Header() {
             <li>SYNTHESIS</li>
           </ul>
         </div>
-      </div>
+      </div>  
       <div className="header-right">
         <div className="header-right-text">
           <p className="header-right-text-p" >C:\OSXPHOENIX\PROGRAMS\PLAYER.EXE=</p>
-          <p>0x...32EE</p>
+          <p className="header-right-text-p text-white" >{`${account.substring(
+                0,
+                6
+              )}...${account.substring(38)}`}</p>
         </div>
-        <div className="header-right-corner">
-          <img className="header-right-corner-image" src="https://img.icons8.com/ios-glyphs/30/null/delete-sign.png" />
+        <div className="header-right-corner" onClick={deactivate} >
+          <img className="header-right-corner-image" src={Close} />
         </div>
       </div>
     </nav>

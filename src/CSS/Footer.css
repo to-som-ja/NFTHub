@@ -12,6 +12,10 @@
     margin-right: 3rem;
 }
 footer{
+    align-self: flex-end;
     display: flex;
     justify-content: flex-end;
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 1.5vh;
 }
