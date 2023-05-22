@@ -1,0 +1,14 @@
+.disconnect{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.disconnect-panel{
+    height: 100%;
+    width: 4rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.back-hover:hover{
+    background-color: rgba(255, 255, 255, 0.7);
+}

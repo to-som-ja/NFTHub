@@ -1,19 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { useWeb3React } from "@web3-react/core";
 import { Injected, WalletConnect } from "../Connectors";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import CardGrid from "../Components/Cards/CardGrid";
+import LeftPanel from "../Components/LeftPanel"
 import "../CSS/Hub.css"
+import CardManager from "../Components/Cards/CardManager";
+import FrontierLogo from "../Icons/frontier_logo.svg";
+import { useLocation } from "react-router-dom";
+import Web3Modal from "web3modal";
+
 
 function Hub() {
+
+
+
     const { activate, deactivate } = useWeb3React();
     const { active, chainId, account } = useWeb3React();
+    const state = useLocation().state;
+    console.log(state.deactivate)
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+    const handleResize = () => {
+        if (window.innerWidth < 768) {
+            setIsMobile(true)
+        } else {
+            setIsMobile(false)
+        }
+    }
+    useEffect(() => {
+        window.addEventListener("resize", handleResize)
+    })
+
     return (
         <div className="hub">
-            {active && (<Header />)}
-            <div className="main-div">
-                {!active && (
+            <LeftPanel />
+            <div className="main-div" style={{ left: (isMobile) ? "0" : "5rem" }}>
+                {active && (<Header />)}
+                {isMobile && !active &&
+                    <div className='mobile-header'>
+                        <div className="mobile-header-corner">
+                            <img className="mobile-header-logo" src={FrontierLogo} />
+                        </div>
+                    </div>
+                }
+                {!active &&
                     <div className="main-div-login">
                         <div className="main-div-text-box">
                             <h1 className="text main-div-h">CONNECT TO HUB</h1>
@@ -23,10 +53,10 @@ function Hub() {
                         </div>
                         <button className="main-div-button text" onClick={() => { activate(Injected) }}>METAMASK</button>
                         <button className="main-div-button text" onClick={() => { activate(WalletConnect, undefined, true).catch((err) => { console.log(err); }); }}>WALLET CONNECT</button>
-                    </div>)}
-                {active && (<CardGrid />)}
+                    </div>}
+                {active && <CardManager />}
+                {!active && <Footer />}
             </div>
-            <Footer />
         </div>
     )
 };

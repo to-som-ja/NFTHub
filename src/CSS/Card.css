@@ -1,0 +1,50 @@
+.Card {
+    background-color: black;
+    margin: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+}
+a{
+    text-decoration: none!important;
+}
+
+.card-image {
+    width: 25rem;
+    height: 25rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-text {
+    display: flex;
+    height: 5.5rem;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-family: 'D-DIN Exp';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.7rem;
+    line-height: 0.8rem;
+    letter-spacing: 0.2em;
+    transition: 0.4s;
+}
+
+.card-text-left p{
+    margin: 0;
+    margin-left: 1rem;
+    text-transform: uppercase;
+}
+.card-text-left img {
+    margin-left: 2rem;
+    width: 1rem;
+}
+.card-text-left{
+    display: flex;
+    align-items: center;
+}
+.card-arrow{
+    margin-right: 2rem;
+    width: 1.3rem;
+}
