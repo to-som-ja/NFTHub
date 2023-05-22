@@ -11,7 +11,7 @@ export default function Card(props) {
     <div className="Card"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
-      <Link to="/info" state={props}>
+      <Link to="/NFTHub/info" state={props}>
         <img src={props.image} className="card-image" />
         <div style={{ backgroundColor: hover ? "white" : "black" }} className="card-text">
           <div className="card-text-left">

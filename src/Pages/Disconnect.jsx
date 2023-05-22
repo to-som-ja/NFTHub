@@ -41,7 +41,7 @@ export default function Disconnect() {
                     <div className="main-div-text-box">
                         <p className="text main-div-p">{account}</p>
                     </div>
-                    <button className="main-div-button text" onClick={() => { deactivate; navigate("/",{ state: { deactivate: true } }) }}>WALLET DISCONNECT</button>
+                    <button className="main-div-button text" onClick={() => { deactivate; navigate("/NFTHub/",{ state: { deactivate: true } }) }}>WALLET DISCONNECT</button>
                 </div>
             </div>
         </div>

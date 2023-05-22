@@ -17,8 +17,7 @@ function Hub() {
 
     const { activate, deactivate } = useWeb3React();
     const { active, chainId, account } = useWeb3React();
-    const state = useLocation().state;
-    console.log(state.deactivate)
+
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
     const handleResize = () => {
         if (window.innerWidth < 768) {

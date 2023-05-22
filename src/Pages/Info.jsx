@@ -13,7 +13,7 @@ export function Info() {
     const attributes = card.metadata.attributes;
     const tier = attributes === undefined ? "" : (attributes.find((element) => { return element.trait_type === "Tier"; }));
     const value = tier === undefined || tier === "" ? "" : tier.value;
-    if (card === null) { return <Navigate to="/" /> };
+    if (card === null) { return <Navigate to="/NFTHub/" /> };
 
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
     const handleResize = () => {

@@ -50,7 +50,7 @@ function Header() {
             6
           )}...${account.substring(38)}`}</p>
         </div>}
-        <Link to="/disconnect" >
+        <Link to="/NFTHub/disconnect" >
           <div className="header-right-corner" >
             <img className="header-right-corner-image" src={Close} />
           </div>

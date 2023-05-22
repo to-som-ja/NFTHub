@@ -17,9 +17,9 @@ function App() {
     <Web3ReactProvider getLibrary={getLibrary}>
       <BrowserRouter>
         <Routes>
-          <Route path="/info" element={<Info />} />
-          <Route path="/disconnect" element={<Disconnect />} />
-          <Route path="/" element={<Hub />} />
+          <Route path="/NFTHub/info" element={<Info />} />
+          <Route path="/NFTHub/disconnect" element={<Disconnect />} />
+          <Route path="/NFTHub/" element={<Hub />} />
           <Route exact path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
