@@ -70,8 +70,7 @@
 }
 
 .header-right-corner-image {
-    width: 30%;
-    height: 30%;
+    height: 25%;
 }
 
 .header-right-text-p {
@@ -106,8 +105,7 @@
 }
 
 .header-left-logo {
-    width: 30%;
-    height: 50%;
+    height: 35%;
     filter: invert(100%);
 }
 

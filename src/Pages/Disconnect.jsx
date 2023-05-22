@@ -5,8 +5,7 @@ import { useNavigate, Navigate, Link } from "react-router-dom";
 import { useWeb3React } from "@web3-react/core";
 
 export default function Disconnect() {
-    const { active, chainId, account } = useWeb3React();
-    const { activate, deactivate } = useWeb3React();
+    const { active, account } = useWeb3React();
     const navigate = useNavigate();
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
     const handleResize = () => {
@@ -19,6 +18,13 @@ export default function Disconnect() {
     useEffect(() => {
         window.addEventListener("resize", handleResize)
     })
+
+    if (!active) { return <Navigate to="/NFTHub/" /> };
+
+    const goToPage = () =>{
+        navigate("/NFTHub/");
+        navigate(0);
+    }
     return (
         <div className="disconnect">
             {!isMobile &&
@@ -41,7 +47,7 @@ export default function Disconnect() {
                     <div className="main-div-text-box">
                         <p className="text main-div-p">{account}</p>
                     </div>
-                    <button className="main-div-button text" onClick={() => { deactivate; navigate("/NFTHub/",{ state: { deactivate: true } }) }}>WALLET DISCONNECT</button>
+                    <button className="main-div-button text" onClick={goToPage}>WALLET DISCONNECT</button>
                 </div>
             </div>
         </div>
