@@ -7,7 +7,6 @@ import Disconnect from "./Pages/Disconnect"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NotFound } from './Pages/NotFound';
 import { Info } from './Pages/Info';
-
 function getLibrary(provider) {
   return new Web3Provider(provider);
 }
@@ -17,13 +16,13 @@ function App() {
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/NFTHub/info" element={<Info />} />
-          <Route path="/NFTHub/disconnect" element={<Disconnect />} />
-          <Route path="/NFTHub/" element={<Hub />} />
-          <Route path="/NFTHub/packs" element={<Packs />} />
-          <Route exact path="*" element={<NotFound />} />
-        </Routes>
+            <Routes>
+              <Route path="/NFTHub/info" element={<Info />} />
+              <Route path="/NFTHub/disconnect" element={<Disconnect />} />
+              <Route path="/NFTHub/" element={<Hub />} />
+              <Route path="/NFTHub/packs" element={<Packs />} />
+              <Route exact path="*" element={<NotFound />} />
+            </Routes>
       </BrowserRouter>
     </Web3ReactProvider>
   )

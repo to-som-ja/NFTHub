@@ -68,11 +68,9 @@
 }
 
 .card-grid {
-    margin-left: 1rem;
-    margin-right: 1rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    /*justify-content: space-evenly;*/
 }
 
 .mobile-header {
@@ -95,7 +93,13 @@
     filter: invert(100%);
 }
 .main-content{
-    margin-top: 4rem;
-    width: 100%;
+    margin-top: 6rem;
+    margin-inline: 2rem;
+    width: -moz-available;
+    width: -webkit-fill-available;
+    width: fill-available;
     display: flex;
+}
+.main-content div{
+    width: 100%;
 }

@@ -10,7 +10,7 @@ export default function Card(props) {
   const link = openable?"/NFTHub/packs":"/NFTHub/info";
   return (
 
-    <div className="Card" style={{width:props.width}}
+    <div className="Card" style={{maxWidth:props.width}}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
       <Link to={link} state={props}>

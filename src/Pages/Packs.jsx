@@ -28,7 +28,7 @@ export default function Packs() {
             setIsMobile(false)
         }
     }
-    if(card!=location.state && location.state!=null)setCard(location.state)
+    if (card != location.state && location.state != null) setCard(location.state)
     useEffect(() => {
         window.addEventListener("resize", handleResize)
     })
@@ -41,17 +41,17 @@ export default function Packs() {
             .then((response) => {
                 const cards = response.data.data.items;
                 const filteredCards = cards.filter(card => { return card.flags[0] === "openable" || card.flags[0] === "burnable" })
-                setPacks(filteredCards.map(item => { return (<Card key={item.id} {...item} width="20rem" />) }));
-                setLoaded(true);       
-                if (card == null) { setCard(filteredCards[0])};
+                setPacks(filteredCards.map(item => { return (<Card key={item.id} {...item} width="22rem" />) }));
+                setLoaded(true);
+                if (card == null) { setCard(filteredCards[0]) };
             })
     }, []);
-    
+
     return (
         <div className='packs-page'>
             <LeftPanel />
             <div className="main-div" style={{ left: (isMobile) ? "0" : "5rem" }}>
-                {active && (<Header border="none" filter="packs"/>)}
+                {active && (<Header border="none" filter="packs" />)}
                 {isMobile && !active &&
                     <div className='mobile-header'>
                         <div className="mobile-header-corner">
@@ -62,8 +62,10 @@ export default function Packs() {
                 <div className='packs-main-content'>
                     <div className='packs-left'>
                         <div className='packs-grid'>
-                            {loaded && packs.length > 0 && <CardGrid cards={packs} />}
-                            {!loaded && <h1> NACITAVAM</h1>}
+                            <div style={{marginInline:"2rem", marginTop:"2rem"}}>
+                                {loaded && packs.length > 0 && <CardGrid cards={packs} grid={{ 600: 1, 1100: 2 }} />}
+                                {!loaded && <h1> NACITAVAM</h1>}
+                            </div>
                         </div>
                     </div>
                     <div className='packs-right'>
@@ -74,7 +76,7 @@ export default function Packs() {
                         </div>
                         <div className='packs-bottom'>
                             <Counter
-                                maxNumber={card===null?0:card.quantity}
+                                maxNumber={card === null ? 0 : card.quantity}
                                 onChange={(value) => {
                                     console.log("onChange>", value);
                                 }} />
@@ -84,7 +86,7 @@ export default function Packs() {
                                 <p className='text packs-text'>OPEN NOW</p>
                             </button>
                             <div className='line'></div>
-                            <a style={{width:"100%"}} className='middle' href={card===null?"":`https://opensea.io/assets/ethereum/0x236672ed575e1e479b8e101aeeb920f32361f6f9/${card.tokenId}`} target="_blank" >
+                            <a style={{ width: "100%" }} className='middle' href={card === null ? "" : `https://opensea.io/assets/ethereum/0x236672ed575e1e479b8e101aeeb920f32361f6f9/${card.tokenId}`} target="_blank" >
                                 <button className='packs-button-trade middle'>
                                     <img src={Arrow} className="packs-arrow" />
                                     <p className='text packs-text'>TRADE NOW</p>

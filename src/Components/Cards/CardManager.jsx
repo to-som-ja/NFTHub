@@ -19,16 +19,16 @@ export default function (props) {
             .then((response) => {
                 setCards(response.data.data.items);
                 applyFilter(response.data.data.items);
+                console.log("API req")
             })
     }, []);
 
     function applyFilter(cards) {
-        setLoaded(false);
         let filteredCards 
         if(searchParams.get("filter")=="all" || searchParams.get("filter")==null ){
             console.log("not filtering",cards)
             setFilteredCards(cards.map(item => { return (<Card key={item.id} {...item}/>) }));
-            setLoaded(true);
+            if(!loaded)setLoaded(true);
             return
         }
         console.log("filtering")
@@ -40,16 +40,16 @@ export default function (props) {
             return block.value == searchParams.get("filter")
         })
         setFilteredCards(filteredCards.map(item => { return (<Card key={item.id} {...item} />) }));
-        setLoaded(true);
+        if(!loaded)setLoaded(true);
     }
-
+    console.log("render")
     useEffect(() => {
         applyFilter(cards);
     }, [searchParams])
 
     return (
         <>
-            {loaded && filteredCards.length > 0 && <CardGrid cards={filteredCards} />}
+            {loaded && filteredCards.length > 0 && <CardGrid cards={filteredCards} grid={props.grid} />}
             {!loaded && <h1> NACITAVAM</h1>}
         </>
     );

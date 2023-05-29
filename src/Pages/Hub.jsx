@@ -55,7 +55,7 @@ function Hub() {
                     </div>}
                 {active &&
                     <div className='main-content'>
-                        <CardManager />
+                        <CardManager  grid={{ 500: 1, 600: 2, 1200: 3, 1600: 4 }}/>
                     </div>
                 }
                 {!active && <Footer />}
