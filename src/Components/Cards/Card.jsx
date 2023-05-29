@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 
 export default function Card(props) {
   const [hover, setHover] = useState(false);
+  const openable = props.flags[0] === "openable" || props.flags[0] === "burnable";
+  const link = openable?"/NFTHub/packs":"/NFTHub/info";
   return (
 
-    <div className="Card"
+    <div className="Card" style={{width:props.width}}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
-      <Link to="/NFTHub/info" state={props}>
+      <Link to={link} state={props}>
         <img src={props.image} className="card-image" />
         <div style={{ backgroundColor: hover ? "white" : "black" }} className="card-text">
           <div className="card-text-left">

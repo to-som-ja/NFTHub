@@ -34,7 +34,7 @@ function Hub() {
         <div className="hub">
             <LeftPanel />
             <div className="main-div" style={{ left: (isMobile) ? "0" : "5rem" }}>
-                {active && (<Header />)}
+                {active && (<Header filter="all"/>)}
                 {isMobile && !active &&
                     <div className='mobile-header'>
                         <div className="mobile-header-corner">
@@ -53,7 +53,11 @@ function Hub() {
                         <button className="main-div-button text" onClick={() => { activate(Injected) }}>METAMASK</button>
                         <button className="main-div-button text" onClick={() => { activate(WalletConnect, undefined, true).catch((err) => { console.log(err); }); }}>WALLET CONNECT</button>
                     </div>}
-                {active && <CardManager />}
+                {active &&
+                    <div className='main-content'>
+                        <CardManager />
+                    </div>
+                }
                 {!active && <Footer />}
             </div>
         </div>

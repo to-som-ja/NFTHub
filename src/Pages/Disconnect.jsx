@@ -45,7 +45,7 @@ export default function Disconnect() {
                         <h1 className="text main-div-h">CONNECTECTED WALLET</h1>
                     </div>
                     <div className="main-div-text-box">
-                        <p className="text main-div-p">{account}</p>
+                        <p className="text main-div-p">{`${account.substring(0,4)}...${account.substring(36)}`}</p>
                     </div>
                     <button className="main-div-button text" onClick={goToPage}>WALLET DISCONNECT</button>
                 </div>

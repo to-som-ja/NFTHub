@@ -3,16 +3,17 @@
     margin: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.15);
     cursor: pointer;
+    width: 25rem;
+    max-width: 90%;
 }
 a{
     text-decoration: none!important;
 }
 
 .card-image {
-    width: 25rem;
-    height: 25rem;
+    width: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center;    
 }
 
 .card-text {

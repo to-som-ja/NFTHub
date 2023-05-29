@@ -10,11 +10,10 @@ export function Info() {
     const card = useLocation().state;
     const navigate = useNavigate();
     const [hover, setHover] = useState(false);
+    if (card === null) { return <Navigate to="/NFTHub/" /> };
     const attributes = card.metadata.attributes;
     const tier = attributes === undefined ? "" : (attributes.find((element) => { return element.trait_type === "Tier"; }));
     const value = tier === undefined || tier === "" ? "" : tier.value;
-    if (card === null) { return <Navigate to="/NFTHub/" /> };
-
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
     const handleResize = () => {
         if (window.innerWidth < 768) {
