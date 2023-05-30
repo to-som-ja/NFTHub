@@ -41,7 +41,7 @@ export default function Packs() {
             .then((response) => {
                 const cards = response.data.data.items;
                 const filteredCards = cards.filter(card => { return card.flags[0] === "openable" || card.flags[0] === "burnable" })
-                setPacks(filteredCards.map(item => { return (<Card key={item.id} {...item} width="22rem" />) }));
+                setPacks(filteredCards.map(item => { return (<Card key={item.id} {...item}  />) }));
                 setLoaded(true);
                 if (card == null) { setCard(filteredCards[0]) };
             })
@@ -51,7 +51,7 @@ export default function Packs() {
         <div className='packs-page'>
             <LeftPanel />
             <div className="main-div" style={{ left: (isMobile) ? "0" : "5rem" }}>
-                {active && (<Header border="none" filter="packs" />)}
+                {active && (<Header filter="packs" />)}
                 {isMobile && !active &&
                     <div className='mobile-header'>
                         <div className="mobile-header-corner">
@@ -63,7 +63,7 @@ export default function Packs() {
                     <div className='packs-left'>
                         <div className='packs-grid'>
                             <div style={{marginInline:"2rem", marginTop:"2rem"}}>
-                                {loaded && packs.length > 0 && <CardGrid cards={packs} grid={{ 600: 1, 1100: 2 }} />}
+                                {loaded && packs.length > 0 && <CardGrid cards={packs} grid={{ 600: 1, 1200: 2, 2000:3, 2800:4 }} />}
                                 {!loaded && <h1> NACITAVAM</h1>}
                             </div>
                         </div>
