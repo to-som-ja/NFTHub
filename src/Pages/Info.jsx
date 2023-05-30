@@ -14,9 +14,9 @@ export function Info() {
     const attributes = card.metadata.attributes;
     const tier = attributes === undefined ? "" : (attributes.find((element) => { return element.trait_type === "Tier"; }));
     const value = tier === undefined || tier === "" ? "" : tier.value;
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1000)
     const handleResize = () => {
-        if (window.innerWidth < 768) {
+        if (window.innerWidth < 1000) {
             setIsMobile(true)
         } else {
             setIsMobile(false)
@@ -69,7 +69,7 @@ export function Info() {
                         <h3>HOLDING</h3>
                         <p className="text-white">{card.quantity} OF 3,000</p>
                     </div>
-                    <a href={`https://opensea.io/assets/ethereum/0x236672ed575e1e479b8e101aeeb920f32361f6f9/${card.tokenId}`} target="_blank" >
+                    <a href={`https://opensea.io/assets/ethereum/0x236672ed575e1e479b8e101aeeb920f32361f6f9/${card.tokenId}`} target="_blank" style={{margin:'2rem 0'}} >
                         <div className="info-link"
                             onMouseEnter={() => setHover(true)}
                             onMouseLeave={() => setHover(false)}>

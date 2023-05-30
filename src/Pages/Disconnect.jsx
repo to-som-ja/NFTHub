@@ -21,7 +21,7 @@ export default function Disconnect() {
 
     if (!active) { return <Navigate to="/NFTHub/" /> };
 
-    const goToPage = () =>{
+    const goToPage = () => {
         navigate("/NFTHub/");
         navigate(0);
     }
@@ -40,15 +40,30 @@ export default function Disconnect() {
                     </div>
                 </div>}
             <div className="main-div" style={{ left: (isMobile) ? "0" : "5rem" }}>
+                {isMobile &&
+                    <div className='mobile-header'>
+                        <div className="mobile-header-corner back-hover" onClick={() => navigate(-1)}>
+                            <img className="mobile-header-logo back" style={{ filter: "invert(0%)" }} src={BackLogo} />
+                        </div>
+                    </div>
+                }
                 <div className="main-div-login">
                     <div className="main-div-text-box">
                         <h1 className="text main-div-h">CONNECTECTED WALLET</h1>
                     </div>
                     <div className="main-div-text-box">
-                        <p className="text main-div-p">{`${account.substring(0,4)}...${account.substring(36)}`}</p>
+                        <p className="text main-div-p">{`${account.substring(0, 4)}...${account.substring(36)}`}</p>
                     </div>
                     <button className="main-div-button text" onClick={goToPage}>WALLET DISCONNECT</button>
                 </div>
+                {isMobile &&
+                    <>
+                        <div className='mobile-footer'>
+                            <p className="mobile-footer-middle" >// THE WATCH COMPANY</p>
+                        </div>
+                        <p className="mobile-footer-left">001</p>
+                    </>
+                }
             </div>
         </div>
     )

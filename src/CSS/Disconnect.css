@@ -1,14 +1,50 @@
-.disconnect{
+.disconnect {
     display: flex;
     height: 100%;
     width: 100%;
 }
-.disconnect-panel{
+
+.disconnect-panel {
     height: 100%;
     width: 4rem;
     border-right: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.back-hover:hover{
+.back-hover {
+    transition: 0.2S;
+}
+
+.back-hover:hover {
     background-color: rgba(255, 255, 255, 0.7);
+}
+
+.mobile-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.mobile-footer-left {
+    margin: 2rem 2rem;
+    position: absolute;
+    bottom: 0;
+    font-family: 'D-DIN Exp';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.625rem;
+    line-height: 0.688rem;
+    letter-spacing: 0.2em;
+
+    color: rgba(255, 255, 255, 0.97);
+}
+
+.mobile-footer-middle {
+    margin: 2rem 2rem;
+    font-family: 'D-DIN Exp';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.625rem;
+    line-height: 0.688rem;
+    text-align: center;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.2);
 }

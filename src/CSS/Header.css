@@ -18,7 +18,7 @@
     display: flex;
     margin: 0;
     padding: 0;
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 
 .header-left-corner-ul li {
@@ -87,7 +87,7 @@
 .hamburger {
     display: block;
     cursor: pointer;
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 
 .bar {
@@ -120,4 +120,13 @@
 }
 .no-hover:hover{
     color: rgba(255, 255, 255, 0.2) !important;
+}
+
+@media (max-width:767px) {
+    .header-left-corner{
+        width: 4rem;
+    }
+    .header-right-corner{
+        width: 4rem;
+    }
 }
