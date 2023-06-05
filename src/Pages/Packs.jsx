@@ -83,9 +83,9 @@ export default function Packs() {
           .on("receipt", (receipt) => {
             console.log("receipt", receipt);
           })
-          .on("confirmation", (confirmationNumber, receipt) => {
-            console.log(confirmationNumber, receipt);
+          .on("confirmation", (confirmationNumber, receipt) => { 
             if (confirmationNumber == 2) {
+            console.log(confirmationNumber, receipt);
               setTimeout(() => {
                 console.log("phase2")
               }, 5000);
