@@ -19,3 +19,12 @@ footer{
     bottom: 0px;
     margin-bottom: 1.5vh;
 }
+
+@media (max-width:767px) {
+    footer{
+        margin:0;
+    }
+    .footer-div{
+        margin-right: 1rem;
+    }
+}

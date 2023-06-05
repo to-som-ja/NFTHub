@@ -6,7 +6,7 @@
 
 .packs-left {
     width: 50%;
-    
+
 }
 
 .packs-grid {
@@ -33,16 +33,18 @@
 }
 
 .packs-top {
-    height: -moz-available;
-    height: -webkit-fill-available;
-    height: fill-available;
+    height: calc(100% - 7.5rem);
     width: 100%;
+    position: relative;
 }
 
 .packs-bottom {
     display: flex;
     flex-direction: column;
     width: 100%;
+    position: absolute;
+    bottom: 0;
+    transition: 1s;
 }
 
 .packs-button-open {
@@ -67,6 +69,7 @@
     transition: 0.4s;
     width: 100%;
 }
+
 .packs-button-trade:hover {
     filter: invert(100%);
 }
@@ -83,14 +86,15 @@
     background-color: rgba(255, 255, 255, 0.80);
 }
 
-.packs-arrow{
+.packs-arrow {
     filter: invert(100%);
     margin: 0;
     height: 32%;
     padding-left: 0.9rem;
 }
-.packs-big-circle{
-    aspect-ratio : 1 / 1;
+
+.packs-big-circle {
+    aspect-ratio: 1 / 1;
     width: 70%;
     border: 1px solid rgba(255, 255, 255, 0.15);
     background-color: rgba(255, 255, 255, 0.02);
@@ -98,15 +102,82 @@
     position: absolute;
 }
 
-.packs-small-circle{
-    aspect-ratio : 1 / 1;
+.packs-small-circle {
+    aspect-ratio: 1 / 1;
     width: 40%;
     border: 1px dashed rgba(255, 255, 255, 0.15);
     background-color: rgba(255, 255, 255, 0.02);
     border-radius: 50%;
     position: absolute;
 }
-.packs-image{
+
+.packs-image {
     z-index: 999;
     width: 60%;
+}
+
+.packs-bottom-confirm {
+    background-color: white;
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    bottom: 0;
+    transition: 1s;
+}
+
+.packs-proceed-button {
+    background-color: white;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    height: 2.5rem;
+    width: 10rem;
+    border: 1px solid rgba(0, 0, 0, 0.13);
+    font-family: 'D-DIN Exp';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.813rem;
+    line-height: 0.875rem;
+    letter-spacing: 0.2em;
+    transition: 0.3s;
+
+}
+.packs-proceed-button:hover{
+    filter: invert(100%);
+}
+
+.packs-cancel-button {
+    background-color: black;
+    color: white;
+    height: 2.5rem;
+    width: 10rem;
+    border: none;
+    font-family: 'D-DIN Exp';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.813rem;
+    line-height: 0.875rem;
+    letter-spacing: 0.2em;
+    transition: 0.3s;
+}
+.packs-cancel-button:hover{
+    filter: invert(100%);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.packs-confirm-h3{
+    font-family: 'D-DIN Exp';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.813rem;
+    line-height: 0.875rem;
+    letter-spacing: 0.2em;
+}
+
+.packs-confirm-p{
+    font-family: 'D-DIN Exp';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.625rem;
+    line-height: 0.688rem;
+    letter-spacing: 0.1em;
 }

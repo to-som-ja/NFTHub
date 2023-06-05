@@ -45,7 +45,7 @@ function Hub() {
                 {!active &&
                     <div className="main-div-login">
                         <div className="main-div-text-box">
-                            <h1 className="text main-div-h">CONNECT TO HUB</h1>
+                            <h1 className="text main-div-h">CONNECT TO THE HUB</h1>
                         </div>
                         <div className="main-div-text-box" style={{width:"70%"}}>
                             <p className="text main-div-p" >TO INTERACT WITH YOUR WATCH NFTs, CONNECT YOUR WALLET USING ONE OF THE OPTIONS BELOW</p>

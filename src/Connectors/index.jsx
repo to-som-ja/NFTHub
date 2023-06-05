@@ -6,7 +6,7 @@ export const getLibrary = (provider) => {
   return new Web3(provider);
 };
 
-export const Injected = new InjectedConnector({ supportedChainIds: [1] });
+export const Injected = new InjectedConnector({ supportedChainIds: [1,5] });
 export const WalletConnect = new WalletConnectConnector({
   rpc: {
     1: "https://eth-mainnet.g.alchemy.com/v2/T3LmgMXEIllErGw9oZ7J7qvJET1roDsL",

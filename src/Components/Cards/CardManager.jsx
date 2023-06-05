@@ -24,23 +24,38 @@ export default function (props) {
     }, []);
 
     function applyFilter(cards) {
-        let filteredCards 
-        if(searchParams.get("filter")=="all" || searchParams.get("filter")==null ){
-            console.log("not filtering",cards)
-            setFilteredCards(cards.map(item => { return (<Card key={item.id} {...item}/>) }));
-            if(!loaded)setLoaded(true);
+        let filteredCards
+        if (searchParams.get("filter") == "all" || searchParams.get("filter") == null) {
+            console.log("not filtering", cards)
+            setFilteredCards(cards.map(item => { return (<Card key={item.id} {...item} />) }));
+            if (!loaded) setLoaded(true);
             return
         }
         console.log("filtering")
-        filteredCards= cards.filter(card => {
-            const atr = card.metadata.attributes;
-            if (atr == undefined) return false
-            const block = atr.find((element) => { return element.trait_type === "Block"; })
-            if (block == undefined) return false
-            return block.value == searchParams.get("filter")
-        })
+        if (searchParams.get("filter") == "Units") {
+            filteredCards = cards.filter(card => {
+                const atr = card.metadata.attributes;
+                if (atr == undefined) return false
+                const unit = atr.find((element) => { return element.trait_type === "Unit"; })
+                if (unit != undefined) return true
+            })
+        } else {
+            if (searchParams.get("filter") == "Utility") {
+                filteredCards = cards.filter(card => {return card.flags[0] != undefined
+                })
+                console.log("filtering utility")
+            } else {
+                filteredCards = cards.filter(card => {
+                    const atr = card.metadata.attributes;
+                    if (atr == undefined) return false
+                    const block = atr.find((element) => { return element.trait_type === "Block"; })
+                    if (block == undefined) return false
+                    return block.value == searchParams.get("filter")
+                })
+            }
+        }
         setFilteredCards(filteredCards.map(item => { return (<Card key={item.id} {...item} />) }));
-        if(!loaded)setLoaded(true);
+        if (!loaded) setLoaded(true);
     }
     console.log("render")
     useEffect(() => {

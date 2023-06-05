@@ -4,6 +4,7 @@
     cursor: pointer;
     width: 100%;
     transition: 0.7s;
+    position: relative;
 }
 a{
     text-decoration: none!important;
@@ -11,6 +12,7 @@ a{
 
 .card-image {
     width: 100%;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     object-position: center;    
 }
@@ -47,4 +49,15 @@ a{
 .card-arrow{
     margin-right: 2rem;
     width: 1.3rem;
+}
+.card-flag{
+    position: absolute;
+    top: 0;
+    right: 0;
+    aspect-ratio: 1 / 1;
+    width: 14% !important; 
+    background-color: rgba(217, 217, 217, 0.11);;
+}
+.card-flag img{
+    width: 50%;
 }

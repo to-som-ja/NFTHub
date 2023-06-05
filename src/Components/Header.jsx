@@ -61,12 +61,12 @@ function Header(props) {
             <li className={activeHeader == "Glitch" ? "active" : ""}>GLITCH BLOCKS</li>
           </Link>
           <li className='no-hover'>\</li>
-          <Link to="/NFTHub/?filter=utility"  >
-            <li className={activeHeader == "utility" ? "active" : ""}>UTILITY</li>
+          <Link to="/NFTHub/?filter=Utility"  >
+            <li className={activeHeader == "Utility" ? "active" : ""}>UTILITY</li>
           </Link>
           <li className='no-hover'>\</li>
-          <Link to="/NFTHub/?filter=skins"  >
-            <li className={activeHeader == "skins" ? "active" : ""}>SKINS</li>
+          <Link to="/NFTHub/?filter=Units"  >
+            <li className={activeHeader == "Units" ? "active" : ""}>UNITS</li>
           </Link>
         </ul>}
       </div>

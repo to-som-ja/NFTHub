@@ -14881,9 +14881,9 @@ web3-eth-accounts@1.2.11:
     web3-core-method "1.2.11"
     web3-utils "1.2.11"
 
-web3-eth-contract@1.10.0:
+web3-eth-contract@1.10.0, web3-eth-contract@^1.10.0:
   version "1.10.0"
-  resolved "https://registry.npmjs.org/web3-eth-contract/-/web3-eth-contract-1.10.0.tgz"
+  resolved "https://registry.yarnpkg.com/web3-eth-contract/-/web3-eth-contract-1.10.0.tgz#8e68c7654576773ec3c91903f08e49d0242c503a"
   integrity sha512-MIC5FOzP/+2evDksQQ/dpcXhSqa/2hFNytdl/x61IeWxhh6vlFeSjq0YVTAyIzdjwnL7nEmZpjfI6y6/Ufhy7w==
   dependencies:
     "@types/bn.js" "^5.1.1"
@@ -15221,7 +15221,7 @@ web3@1.2.11:
 
 web3@^1.10.0:
   version "1.10.0"
-  resolved "https://registry.npmjs.org/web3/-/web3-1.10.0.tgz"
+  resolved "https://registry.yarnpkg.com/web3/-/web3-1.10.0.tgz#2fde0009f59aa756c93e07ea2a7f3ab971091274"
   integrity sha512-YfKY9wSkGcM8seO+daR89oVTcbu18NsVfvOngzqMYGUU0pPSQmE57qQDvQzUeoIOHAnXEBNzrhjQJmm8ER0rng==
   dependencies:
     web3-bzz "1.10.0"

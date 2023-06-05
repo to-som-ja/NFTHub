@@ -23,7 +23,7 @@
 
 .header-left-corner-ul li {
     margin-right: 0.5rem;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.3);
     list-style-type: none;
     font-family: 'D-DIN Exp', sans-serif;
     font-weight: 700;
@@ -119,7 +119,7 @@
     height: 100%;
 }
 .no-hover:hover{
-    color: rgba(255, 255, 255, 0.2) !important;
+    color: rgba(255, 255, 255, 0.3) !important;
 }
 
 @media (max-width:767px) {
