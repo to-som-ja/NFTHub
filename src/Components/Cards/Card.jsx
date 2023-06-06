@@ -21,10 +21,10 @@ export default function Card(props) {
   }, [])
   return (
 
-    <div className="Card" style={{ maxWidth: props.width }}
+    <div className="Card" style={{ maxWidth: props.width, borderColor: props.active?"white":""}}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
-      <Link to={link} state={props}>
+      <Link to={link} state={{props}}>
         <img src={props.image} className="card-image" loading="lazy"/>
         {props.flags[0] != undefined && <div className="card-flag middle">
           <img src={Flag} />

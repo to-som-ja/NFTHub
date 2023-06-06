@@ -21,18 +21,20 @@ export default function (props) {
         setLoaded(false);
         axios.get(`https://api-staging.thewatch.com/api/users/0x03818E2b69Cb63eCD8763B9B0f275d7f8995aF1a/items`)
             .then((response) => {
-                setCards(response.data.data.items);
+                const items= response.data.data.items
+                for (let index = 0; index < items.length; index++) {
+                    items[index].key=index
+                }
+                setCards(items);
                 applyFilter(response.data.data.items);
                 setLoaded(true);
-                console.log("API req")
             })
     }, []);
 
     async function applyFilter(cards) {
         let filteredCards;
         if (searchParams.get("filter") == "all" || searchParams.get("filter") == null) {
-            console.log("not filtering", cards)
-            setFilteredCards(await cards.map(item => { return (<Card key={item.id} {...item} />) }));   
+            setFilteredCards(cards.map((item, index) => { return (<Card  key={index} id={index} {...item} />) }));   
             return;
         }
         if (searchParams.get("filter") == "Units") {
@@ -47,7 +49,6 @@ export default function (props) {
                 filteredCards = cards.filter(card => {
                     return card.flags[0] != undefined
                 })
-                console.log("filtering utility")
             } else {
                 filteredCards = cards.filter(card => {
                     const atr = card.metadata.attributes;
@@ -58,7 +59,7 @@ export default function (props) {
                 })
             }
         }
-        setFilteredCards(filteredCards.map(item => { return (<Card key={item.id} {...item} />) }));
+        setFilteredCards(filteredCards.map((item,index) => { return (<Card key={index} id={index} {...item} />) }));
     }
     useEffect(() => {
         applyFilter(cards)
