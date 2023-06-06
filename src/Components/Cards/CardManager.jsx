@@ -18,21 +18,22 @@ export default function (props) {
         return new Promise( res => setTimeout(res, delay) );
     }
     useEffect(() => {
+        setLoaded(false);
         axios.get(`https://api-staging.thewatch.com/api/users/0x03818E2b69Cb63eCD8763B9B0f275d7f8995aF1a/items`)
             .then((response) => {
                 setCards(response.data.data.items);
                 applyFilter(response.data.data.items);
+                setLoaded(true);
                 console.log("API req")
             })
     }, []);
 
-    function applyFilter(cards) {
-        let filteredCards
+    async function applyFilter(cards) {
+        let filteredCards;
         if (searchParams.get("filter") == "all" || searchParams.get("filter") == null) {
             console.log("not filtering", cards)
-            setFilteredCards(cards.map(item => { return (<Card key={item.id} {...item} />) }));
-            setLoaded(true);
-            return
+            setFilteredCards(await cards.map(item => { return (<Card key={item.id} {...item} />) }));   
+            return;
         }
         if (searchParams.get("filter") == "Units") {
             filteredCards = cards.filter(card => {
@@ -58,12 +59,9 @@ export default function (props) {
             }
         }
         setFilteredCards(filteredCards.map(item => { return (<Card key={item.id} {...item} />) }));
-        setLoaded(true);
     }
     useEffect(() => {
-        setLoaded(false)
         applyFilter(cards)
-        
     }, [searchParams])
 
     return (

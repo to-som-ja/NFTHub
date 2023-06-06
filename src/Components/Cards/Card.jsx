@@ -25,7 +25,7 @@ export default function Card(props) {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
       <Link to={link} state={props}>
-        <img src={props.image} className="card-image" />
+        <img src={props.image} className="card-image" loading="lazy"/>
         {props.flags[0] != undefined && <div className="card-flag middle">
           <img src={Flag} />
         </div>}
