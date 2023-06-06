@@ -101,9 +101,10 @@
     width: fill-available;
     display: flex;
 }
-.main-content div{
+.main-content > div {
     width: 100%;
 }
+
 @media (max-width:767px) {
     .main-div-button{
         height: 3.5rem;

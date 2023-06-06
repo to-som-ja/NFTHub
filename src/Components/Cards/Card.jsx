@@ -34,6 +34,11 @@ export default function Card(props) {
             <img style={{ filter: hover ? "invert(100%)" : "" }} src={icon} />
             <p style={{ filter: hover ? "invert(100%)" : "" }} >{props.name}</p>
           </div>
+          {!hover && 
+          <div className="card-quantity middle">
+            <p>{props.quantity}</p>
+          </div>
+            }
           {hover && <img src={Arrow} className="card-arrow" />}
         </div>
       </Link>
