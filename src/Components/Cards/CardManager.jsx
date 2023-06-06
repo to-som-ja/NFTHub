@@ -3,6 +3,7 @@ import { useWeb3React } from "@web3-react/core";
 import { CardGrid } from "./CardGrid";
 import Card from './Card';
 import axios from 'axios';
+import loading from '../../Images/loading.gif';
 import { useSearchParams } from "react-router-dom";
 
 export default function (props) {
@@ -13,8 +14,10 @@ export default function (props) {
     const { account } = useWeb3React();
     const [filteredCards, setFilteredCards] = useState([]);
     const [cards, setCards] = useState([]);
+    function timeout(delay) {
+        return new Promise( res => setTimeout(res, delay) );
+    }
     useEffect(() => {
-        setLoaded(false);
         axios.get(`https://api-staging.thewatch.com/api/users/0x03818E2b69Cb63eCD8763B9B0f275d7f8995aF1a/items`)
             .then((response) => {
                 setCards(response.data.data.items);
@@ -28,10 +31,9 @@ export default function (props) {
         if (searchParams.get("filter") == "all" || searchParams.get("filter") == null) {
             console.log("not filtering", cards)
             setFilteredCards(cards.map(item => { return (<Card key={item.id} {...item} />) }));
-            if (!loaded) setLoaded(true);
+            setLoaded(true);
             return
         }
-        console.log("filtering")
         if (searchParams.get("filter") == "Units") {
             filteredCards = cards.filter(card => {
                 const atr = card.metadata.attributes;
@@ -41,7 +43,8 @@ export default function (props) {
             })
         } else {
             if (searchParams.get("filter") == "Utility") {
-                filteredCards = cards.filter(card => {return card.flags[0] != undefined
+                filteredCards = cards.filter(card => {
+                    return card.flags[0] != undefined
                 })
                 console.log("filtering utility")
             } else {
@@ -55,17 +58,21 @@ export default function (props) {
             }
         }
         setFilteredCards(filteredCards.map(item => { return (<Card key={item.id} {...item} />) }));
-        if (!loaded) setLoaded(true);
+        setLoaded(true);
     }
-    console.log("render")
     useEffect(() => {
-        applyFilter(cards);
+        setLoaded(false)
+        applyFilter(cards)
+        
     }, [searchParams])
 
     return (
         <>
-            {loaded && filteredCards.length > 0 && <CardGrid cards={filteredCards} grid={props.grid} />}
-            {!loaded && <h1> NACITAVAM</h1>}
+            {loaded && <CardGrid cards={filteredCards} grid={props.grid} />}
+            {!loaded &&
+                <div className='middle'>
+                    <img src={loading} />
+                </div>}
         </>
     );
 };

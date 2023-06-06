@@ -181,3 +181,8 @@
     line-height: 0.688rem;
     letter-spacing: 0.1em;
 }
+.packs-grid-content{
+    padding-inline: 2rem;
+    padding-top: 2rem ;
+    height: 100%
+}

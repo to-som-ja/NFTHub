@@ -16,10 +16,10 @@ import { useNavigate, Navigate, Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import MinterABI from "../abis/Minter.json";
 import Web3 from 'web3';
-
+import loading from '../Images/loading.gif';
 
 export default function Packs() {
-    const { active, account} = useWeb3React();
+    const { active, account } = useWeb3React();
     if (!active) { return <Navigate to="/NFTHub/" /> };
     const location = useLocation();
     const [card, setCard] = useState(location.state);
@@ -28,10 +28,10 @@ export default function Packs() {
     const [packs, setPacks] = useState([]);
     const [burnTxHash, setBurnTxHash] = useState();
     const [openingState, setOpeningState] = useState(0);
-    const [openQuantity, setOpenQuantity] = card === null ? useState(0) :useState(1);
+    const [openQuantity, setOpenQuantity] = card === null ? useState(0) : useState(1);
     const [errMessage, setErrMessage] = useState();
     const [key, setKey] = useState();
-    const { library} = useWeb3React();
+    const { library } = useWeb3React();
     const handleResize = () => {
         if (window.innerWidth < 768) {
             setIsMobile(true)
@@ -45,7 +45,7 @@ export default function Packs() {
     })
     axios.defaults.headers.common['CF-Access-Client-Id'] = 'ee3609e2c3b9626bb9128eb707f93afa.access'
     axios.defaults.headers.common['CF-Access-Client-Secret'] = '453c91ec9153b8989820d1bbc72b71f81f5c1f9f1f879499a8ab24e118ac0864'
-    
+
     useEffect(() => {
         setLoaded(false);
         axios.get(`https://api-staging.thewatch.com/api/users/0x03818E2b69Cb63eCD8763B9B0f275d7f8995aF1a/items`)
@@ -57,62 +57,62 @@ export default function Packs() {
                 if (card == null) { setCard(filteredCards[0]) };
             })
     }, []);
-    useEffect(()=>{
+    useEffect(() => {
         setOpeningState(0);
-        if(card!=null && card.quantity>0) setOpenQuantity(1)
+        if (card != null && card.quantity > 0) setOpenQuantity(1)
         setKey(Math.random())
-    },[card])
+    }, [card])
 
 
     /*Contract.setProvider(library.provider);*/
     /*const minterContract = new library.eth.Contract(MinterABI,"0x997aA28eC7F1340C5e345C68b73Eb27aE0400D1E");*/
     const web3 = new Web3(library.provider);
-    const minterContract = new web3.eth.Contract(MinterABI,"0x997aA28eC7F1340C5e345C68b73Eb27aE0400D1E");
+    const minterContract = new web3.eth.Contract(MinterABI, "0x997aA28eC7F1340C5e345C68b73Eb27aE0400D1E");
     var txHash
     const burnBoxes = () => {
         console.log(openQuantity)
         minterContract.methods
-          .burn(card.tokenId, openQuantity)
-          .send({ from: account })
-          .on("transactionHash", (hash) => {
-            setErrMessage();
-            setBurnTxHash(hash);
-            txHash = hash
-            console.log("txHash", txHash);
-          })
-          .on("receipt", (receipt) => {
-            console.log("receipt", receipt);
-          })
-          .on("confirmation", (confirmationNumber, receipt) => { 
-            if (confirmationNumber == 2) {
-            console.log(confirmationNumber, receipt);
-              setTimeout(() => {
-                console.log("phase2")
-              }, 5000);
-              axios.get(`https://api-staging.thewatch.com/api/box/status/${txHash}`).then((response) => {
-                const data = response.data;
-                console.log("data",data);
-                
-              });
-            }
-          })
-          .on("error", (err) => {
-            console.log("err", err);
-            setErrMessage("Error burning boxes");
-          });
-      };
+            .burn(card.tokenId, openQuantity)
+            .send({ from: account })
+            .on("transactionHash", (hash) => {
+                setErrMessage();
+                setBurnTxHash(hash);
+                txHash = hash
+                console.log("txHash", txHash);
+            })
+            .on("receipt", (receipt) => {
+                console.log("receipt", receipt);
+            })
+            .on("confirmation", (confirmationNumber, receipt) => {
+                if (confirmationNumber == 2) {
+                    console.log(confirmationNumber, receipt);
+                    setTimeout(() => {
+                        console.log("phase2")
+                    }, 5000);
+                    axios.get(`https://api-staging.thewatch.com/api/box/status/${txHash}`).then((response) => {
+                        const data = response.data;
+                        console.log("data", data);
 
-      const revealBoxes = async () => {
+                    });
+                }
+            })
+            .on("error", (err) => {
+                console.log("err", err);
+                setErrMessage("Error burning boxes");
+            });
+    };
+
+    const revealBoxes = async () => {
         const signatureold = await library.eth.personal.sign(
-          `${account}:${dropId}:${userOpens}`,
-          account
+            `${account}:${dropId}:${userOpens}`,
+            account
         );
         console.log(signature)
         const signature = web3.eth.personal.sign(
             `${account}:${card.tokenId}:${openQuantity}`,
             account
-          );
-      };
+        );
+    };
 
     return (
         <div className='packs-page'>
@@ -129,9 +129,12 @@ export default function Packs() {
                 <div className='packs-main-content'>
                     <div className='packs-left'>
                         <div className='packs-grid'>
-                            <div style={{ marginInline: "2rem", marginTop: "2rem" }}>
+                            <div className='packs-grid-content'>
                                 {loaded && packs.length > 0 && <CardGrid cards={packs} grid={{ 600: 1, 1200: 2, 2000: 3, 2800: 4 }} />}
-                                {!loaded && <h1> NACITAVAM</h1>}
+                                {!loaded &&
+                                    <div className='middle' style={{height:"100%"}}>
+                                        <img src={loading} />
+                                    </div>}
                             </div>
                         </div>
                     </div>
@@ -144,7 +147,7 @@ export default function Packs() {
                         {openingState == 0 &&
                             <div className='packs-bottom'>
                                 <Counter
-                                    key = {key}
+                                    key={key}
                                     maxNumber={card === null ? 0 : card.quantity}
                                     onChange={(value) => {
                                         setOpenQuantity(value);
