@@ -20,7 +20,8 @@ a {
 
 .card-text {
     display: flex;
-    height: 5.5rem;
+    aspect-ratio: 4 / 1;
+
     justify-content: space-between;
     align-items: center;
     color: white;

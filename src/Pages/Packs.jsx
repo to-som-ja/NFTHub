@@ -65,7 +65,7 @@ export default function Packs() {
                     setCard(filtCards[0]);
                     filtCards[0].active = true;
                 } else {
-                    filtCards.find(item => item.id == card.props.id).active = true
+                    filtCards.find(item => item.id == card.id).active = true
                 }
                 setPacks(filtCards.map((item) => { return (<Card {...item} key={item.id} active={item.active != undefined} />) }));
                 setLoaded(true);
@@ -77,7 +77,7 @@ export default function Packs() {
         if (card != null && card.quantity > 0) setOpenQuantity(1)
         setKey(Math.random())
         if (filteredCards != undefined) {
-            setPacks(filteredCards.map((item) => { return (<Card {...item} id={item.id} key={item.id} active={item.id == card.props.id} />) }));
+            setPacks(filteredCards.map((item) => { return (<Card {...item} id={item.id} key={item.id} active={item.id == card.id} />) }));
         }
     }, [card])
 
@@ -90,7 +90,7 @@ export default function Packs() {
     const burnBoxes = () => {
         console.log(openQuantity)
         minterContract.methods
-            .burn(card.props.tokenId, openQuantity)
+            .burn(card.tokenId, openQuantity)
             .send({ from: account })
             .on("transactionHash", (hash) => {
                 setErrMessage();
@@ -127,7 +127,7 @@ export default function Packs() {
         );
         console.log(signature)
         const signature = web3.eth.personal.sign(
-            `${account}:${card.props.tokenId}:${openQuantity}`,
+            `${account}:${card.tokenId}:${openQuantity}`,
             account
         );
     };
@@ -166,7 +166,7 @@ export default function Packs() {
                             <div className='packs-bottom'>
                                 <Counter
                                     key={key}
-                                    maxNumber={card == null ? 0 : card.props.quantity}
+                                    maxNumber={card == null ? 0 : card.quantity}
                                     onChange={(value) => {
                                         setOpenQuantity(value);
                                         console.log("onChange>", openQuantity);
@@ -174,7 +174,7 @@ export default function Packs() {
                                 <div className='line'></div>
                                 <button className='packs-button-open middle' onClick={() => setOpeningState(1)}>
                                     <img src={openLogo} />
-                                    <p className='text packs-text'>OPEN NOW {card.props.quantity}</p>
+                                    <p className='text packs-text'>OPEN NOW</p>
                                 </button>
                                 <div className='line'></div>
                                 <a style={{ width: "100%" }} className='middle' href={card == null ? "" : `https://opensea.io/assets/ethereum/0x236672ed575e1e479b8e101aeeb920f32361f6f9/${card.tokenId}`} target="_blank" >
