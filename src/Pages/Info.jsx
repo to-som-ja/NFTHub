@@ -29,6 +29,7 @@ export function Info() {
     return (
         <div className="info-main">
             <div className="info-main-left" >
+                <div className="info-main-left-background" style={{ backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.31), rgba(0, 0, 0, 0.31)),url(${card.image})` }}></div>
                 <div className="info-header">
                     <div className="info-header-back middle" onClick={() => navigate(-1)}>
                         <img className="info-header-back-logo" src={BackLogo} />
@@ -41,10 +42,10 @@ export function Info() {
                     <div className="info-left-right-panel"></div>
                 </div>
 
-                {!isMobile &&
+                
                     <div className='info-left-footer'>
                         <div className="info-left-left-panel"></div>
-                    </div>}
+                    </div>
             </div>
 
 

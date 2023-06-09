@@ -168,4 +168,7 @@
     .header-right-corner {
         width: 4rem;
     }
+    .header-right-corner-image{
+        height: 30%;
+    }
 }

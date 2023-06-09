@@ -6,13 +6,16 @@ export const CardGrid = (props) => {
 
 
 
-  return (
+  return (<>
     <ResponsiveMasonry
       columnsCountBreakPoints={props.grid}
     >
       <Masonry gutter="2rem">
         {props.cards}
       </Masonry>
+      <div style={{height:"4rem"}}></div>
     </ResponsiveMasonry>
+    
+  </>
   );
 }

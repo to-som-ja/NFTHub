@@ -18,7 +18,7 @@ function Header(props) {
       setIsMobile(true);
     } else {
       setIsMobile(false)
-      if(showMobileItems) setShowMobileItems(false)
+      if (showMobileItems) setShowMobileItems(false)
     }
     if (window.innerWidth < 1000) {
       setSmallScreen(true);
@@ -26,6 +26,11 @@ function Header(props) {
       setSmallScreen(false)
     }
   }
+
+  useEffect(() => {
+    setShowMobileItems(false)
+  }, [searchParams])
+
   useEffect(() => {
     window.addEventListener("resize", handleResize)
   })
