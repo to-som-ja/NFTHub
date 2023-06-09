@@ -23,7 +23,7 @@ export default function (props) {
             .then((response) => {
                 const items= response.data.data.items
                 for (let index = 0; index < items.length; index++) {
-                    items[index].key=index
+                    items[index].id=index
                 }
                 setCards(items);
                 applyFilter(response.data.data.items);
@@ -59,7 +59,7 @@ export default function (props) {
                 })
             }
         }
-        setFilteredCards(filteredCards.map((item,index) => { return (<Card key={index} id={index} {...item} />) }));
+        setFilteredCards(filteredCards.map((item,index) => { return (<Card key={index} {...item} />) }));
     }
     useEffect(() => {
         applyFilter(cards)

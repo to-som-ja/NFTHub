@@ -34,12 +34,15 @@ export default function Card(props) {
             <img style={{ filter: hover || props.active ? "invert(100%)" : "" }} src={icon} />
             <p style={{ filter: hover || props.active ? "invert(100%)" : "" }} >{props.name}</p>
           </div>
-          {((!hover) || (hover && props.active)) &&
-            <div className="card-quantity middle">
-              <p style={{ filter: props.active ? "invert(100%)" : "" }}>{props.quantity}</p>
-            </div>
-          }
-          {hover && !props.active && <img src={Arrow} className="card-arrow" />}
+
+          <div className="card-quantity middle" style={{border:hover&& !props.active?"none":""}}>
+            {((!hover) || (hover && props.active)) &&
+              <p style={{ filter: props.active ? "invert(100%)" : "" }}>{props.quantity}</p>}
+            {hover && !props.active &&
+              <img src={Arrow} className="card-arrow" />}
+          </div>
+
+
         </div>
       </Link>
     </div>

@@ -58,13 +58,14 @@ export default function Packs() {
                 for (let index = 0; index < items.length; index++) {
                     items[index].id = index
                 }
-                console.log("api")
+                
                 const filtCards = items.filter(card => { return card.flags[0] === "openable" || card.flags[0] === "burnable" })
                 setFilteredCards(filtCards)
                 if (card == null) {
                     setCard(filtCards[0]);
                     filtCards[0].active = true;
                 } else {
+                    console.log("api",filtCards,card.id)
                     filtCards.find(item => item.id == card.id).active = true
                 }
                 setPacks(filtCards.map((item) => { return (<Card {...item} key={item.id} active={item.active != undefined} />) }));

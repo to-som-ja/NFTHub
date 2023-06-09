@@ -29,8 +29,6 @@ export function Info() {
     return (
         <div className="info-main">
             <div className="info-main-left" >
-                <div className="info-main-left-background" style={{ backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.31), rgba(0, 0, 0, 0.31)),url(${card.image})` }}>
-                </div>
                 <div className="info-header">
                     <div className="info-header-back middle" onClick={() => navigate(-1)}>
                         <img className="info-header-back-logo" src={BackLogo} />
@@ -38,10 +36,20 @@ export function Info() {
                     <div className="info-header-div"></div>
                 </div>
                 <div className="info-left-main">
-                    <div className="info-left-panel"></div>
+                    <div className="info-left-left-panel"></div>
                     <img src={card.image} />
+                    <div className="info-left-right-panel"></div>
                 </div>
+
+                {!isMobile &&
+                    <div className='info-left-footer'>
+                        <div className="info-left-left-panel"></div>
+                    </div>}
             </div>
+
+
+
+
             <div className="info-main-right middle">
                 <div className="info-main-right-block">
                     <div className='info-mobile-group'>
@@ -69,7 +77,7 @@ export function Info() {
                         <h3>HOLDING</h3>
                         <p className="text-white">{card.quantity} OF 3,000</p>
                     </div>
-                    <a href={`https://opensea.io/assets/ethereum/0x236672ed575e1e479b8e101aeeb920f32361f6f9/${card.tokenId}`} target="_blank" style={{margin:'2rem 0'}} >
+                    <a href={`https://opensea.io/assets/ethereum/0x236672ed575e1e479b8e101aeeb920f32361f6f9/${card.tokenId}`} target="_blank" style={{ margin: '2rem 0' }} >
                         <div className="info-link"
                             onMouseEnter={() => setHover(true)}
                             onMouseLeave={() => setHover(false)}>
