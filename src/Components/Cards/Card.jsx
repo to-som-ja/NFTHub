@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 
 export default function Card(props) {
   const { onLoadImage } = props;
+  const { image, metadata, name, quantity, tokenId, id}= props
   const [hover, setHover] = useState(false);
   const openable = props.flags[0] === "openable" || props.flags[0] === "burnable";
   const link = openable ? "/NFTHub/packs" : "/NFTHub/info";
   const [icon, setIcon] = useState(CardIcon);
-
   const useImageLoaded = () => {
     const ref = useRef()
     const onLoad = () => {
@@ -36,11 +36,10 @@ export default function Card(props) {
     if (props.flags[0] != undefined) setIcon("https://uploads-ssl.webflow.com/63e68367601a460550796587/63e68367601a466872796a8b_Abstract%2520icon%2520089-p-2000.png")
   }, [])
   return (
-
     <div className="Card" style={{ maxWidth: props.width }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
-      <Link to={link} state={props}>
+      <Link to={link} state={{image, metadata, name, quantity, tokenId,id}}>
         <img onLoad={onLoad} ref={ref} src={props.image} className="card-image" />
         {props.flags[0] != undefined && <div className="card-flag middle">
           <img src={Flag} />
