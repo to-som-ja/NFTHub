@@ -5,6 +5,7 @@ import Card from './Card';
 import axios from 'axios';
 import loadingGIF from '../../Images/loading.gif';
 import { useSearchParams } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 
 export default function (props) {
     axios.defaults.headers.common['CF-Access-Client-Id'] = 'ee3609e2c3b9626bb9128eb707f93afa.access'
@@ -16,8 +17,8 @@ export default function (props) {
     const [filteredCards, setFilteredCards] = useState([]);
     const [cards, setCards] = useState([]);
     const counter = useRef(0);
-    
-    const imageLoaded=(count)=>{
+
+    const imageLoaded = (count) => {
         counter.current += 1;
         if (counter.current >= count) {
             setLoading(false);
@@ -44,7 +45,7 @@ export default function (props) {
             filteredCards = cards.filter(card => {
                 return true
             })
-            setFilteredCards(filteredCards.map((item, index) => { return (<Card key={index} id={index} {...item} onLoadImage={()=>imageLoaded(filteredCards.length)} />) }));
+            setFilteredCards(filteredCards.map((item, index) => { return (<Card key={index} id={index} {...item} onLoadImage={() => imageLoaded(filteredCards.length)} />) }));
             return;
         }
         if (searchParams.get("filter") == "Units") {
@@ -69,19 +70,25 @@ export default function (props) {
                 })
             }
         }
-        setFilteredCards(filteredCards.map((item, index) => { return (<Card key={index} {...item} onLoadImage={()=>imageLoaded(filteredCards.length)}/>) }));
+        setFilteredCards(filteredCards.map((item, index) => { return (<Card key={index} {...item} onLoadImage={() => imageLoaded(filteredCards.length)} />) }));
     }
     useEffect(() => {
         applyFilter(cards)
-        counter.current=0;
+        counter.current = 0;
         setLoading(true)
     }, [searchParams])
 
     return (
         <>
-            <div style={{ display: loading ? "none" : "block" }}>
-                {loaded && <CardGrid cards={filteredCards} grid={props.grid} />}
-            </div>
+            <CSSTransition
+                in={!loading}
+                timeout={500}
+                classNames="grid-transition"
+            >
+                <div style={{ display: "none" }}>
+                    {loaded && <CardGrid cards={filteredCards} grid={props.grid} />}
+                </div>
+            </CSSTransition>
             {(!loaded || loading) &&
                 <div className={`middle loading-div ${(!loaded || loading) && 'visible'}`}>
                     <img src={loadingGIF} />

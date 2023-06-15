@@ -113,8 +113,58 @@
     width: 100%;
 }
 
+.loading-div{
+    display: flex;
+}
 
+/* === Exit Transition ===*/
+.loading-transition-exit{
+    opacity: 1;
+    display: flex !important;
+}
+.loading-transition-exit-active{
+    opacity: 0;
+    transition: all 300ms ease-out;
+}
+.loading-transition-exit-done{
+    display: none !important; 
+}
 
+.grid-transition-exit{
+    opacity: 1;
+    display: none!important;
+}
+.grid-transition-exit-active{
+    opacity: 0;
+    transition: all 500ms;
+}
+.grid-transition-exit-done{
+    display: none !important; 
+}
+/* === Enter Transition ===*/
+.loading-transition-enter{
+    display: flex !important;
+    opacity: 0;
+}
+.loading-transition-enter-active{
+    opacity: 1;
+    transition: all 300ms ease-out;
+}
+.loading-transition-enter-done{
+    display: flex !important;
+}
+
+.grid-transition-enter{
+    opacity: 0;
+    display: block !important;
+}
+.grid-transition-enter-active{
+    opacity: 1;
+    transition: all 500ms ;
+}
+.grid-transition-enter-done{
+    display: block !important;
+}
 @media (max-width:767px) {
     .main-div-button {
         height: 3.5rem;
