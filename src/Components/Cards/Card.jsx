@@ -2,15 +2,30 @@ import "../../CSS/Card.css"
 import CardIcon from "../../Icons/double_triangle.svg"
 import Arrow from "../../Icons/Arrow.svg"
 import Flag from "../../Icons/Flag.svg"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 
 export default function Card(props) {
-  const {onLoadImage}=props;
+  const { onLoadImage } = props;
   const [hover, setHover] = useState(false);
   const openable = props.flags[0] === "openable" || props.flags[0] === "burnable";
   const link = openable ? "/NFTHub/packs" : "/NFTHub/info";
   const [icon, setIcon] = useState(CardIcon);
+
+  const useImageLoaded = () => {
+    const ref = useRef()
+    const onLoad = () => {
+      onLoadImage()
+    }
+    useEffect(() => {
+      if (ref.current && ref.current.complete) {
+        onLoad()
+      }
+    })
+    return [ref, onLoad]
+  }
+  const [ref, onLoad] = useImageLoaded()
+
   useEffect(() => {
     const atr = props.metadata.attributes
     if (atr != undefined) {
@@ -26,7 +41,7 @@ export default function Card(props) {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
       <Link to={link} state={props}>
-        <img onLoad={() => onLoadImage()} src={props.image} className="card-image"/>
+        <img onLoad={onLoad} ref={ref} src={props.image} className="card-image" />
         {props.flags[0] != undefined && <div className="card-flag middle">
           <img src={Flag} />
         </div>}
@@ -36,7 +51,7 @@ export default function Card(props) {
             <p style={{ filter: hover || props.active ? "invert(100%)" : "" }} >{props.name}</p>
           </div>
 
-          <div className="card-quantity middle" style={{border:hover&& !props.active?"none":""}}>
+          <div className="card-quantity middle" style={{ border: hover && !props.active ? "none" : "" }}>
             {((!hover) || (hover && props.active)) &&
               <p style={{ filter: props.active ? "invert(100%)" : "" }}>{props.quantity}</p>}
             {hover && !props.active &&

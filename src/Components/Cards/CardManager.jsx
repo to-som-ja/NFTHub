@@ -18,7 +18,6 @@ export default function (props) {
     const counter = useRef(0);
     
     const imageLoaded=(count)=>{
-        console.log(loading,counter.current,count )
         counter.current += 1;
         if (counter.current >= count) {
             setLoading(false);
