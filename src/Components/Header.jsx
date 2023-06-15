@@ -4,6 +4,7 @@ import { useWeb3React } from "@web3-react/core";
 import Close from "../Icons/close_4.svg";
 import FrontierLogo from "../Icons/frontier_logo.svg";
 import { Link, useSearchParams } from "react-router-dom";
+import { Transition, CSSTransition, SwitchTransition, TransitionGroup } from "react-transition-group";
 
 
 function Header(props) {
@@ -99,7 +100,11 @@ function Header(props) {
           </div>
         </Link>
       </div>
-      {showMobileItems &&
+      <CSSTransition
+        in={showMobileItems}
+        timeout={300}
+        classNames="header-transition"
+      >
         <div className='header-mobile-items'>
           <ul className="header-mobile-items-ul">
             <Link to="/NFTHub/?filter=all" >
@@ -124,7 +129,9 @@ function Header(props) {
               <li className={activeHeader == "Units" ? "active" : ""}>/ UNITS</li>
             </Link>
           </ul>
-        </div>}
+        </div>
+      </CSSTransition>
+
     </nav>
   );
 };

@@ -6,6 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 export default function Card(props) {
+  const {onLoadImage}=props;
   const [hover, setHover] = useState(false);
   const openable = props.flags[0] === "openable" || props.flags[0] === "burnable";
   const link = openable ? "/NFTHub/packs" : "/NFTHub/info";
@@ -25,7 +26,7 @@ export default function Card(props) {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
       <Link to={link} state={props}>
-        <img src={props.image} className="card-image" loading="lazy" />
+        <img onLoad={() => onLoadImage()} src={props.image} className="card-image"/>
         {props.flags[0] != undefined && <div className="card-flag middle">
           <img src={Flag} />
         </div>}

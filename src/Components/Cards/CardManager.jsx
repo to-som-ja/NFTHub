@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useWeb3React } from "@web3-react/core";
 import { CardGrid } from "./CardGrid";
 import Card from './Card';
 import axios from 'axios';
-import loading from '../../Images/loading.gif';
+import loadingGIF from '../../Images/loading.gif';
 import { useSearchParams } from "react-router-dom";
 
 export default function (props) {
@@ -11,19 +11,27 @@ export default function (props) {
     axios.defaults.headers.common['CF-Access-Client-Secret'] = '453c91ec9153b8989820d1bbc72b71f81f5c1f9f1f879499a8ab24e118ac0864'
     const [searchParams, setSearchParams] = useSearchParams()
     const [loaded, setLoaded] = useState(false);
+    const [loading, setLoading] = useState(true);
     const { account } = useWeb3React();
     const [filteredCards, setFilteredCards] = useState([]);
     const [cards, setCards] = useState([]);
-    function timeout(delay) {
-        return new Promise( res => setTimeout(res, delay) );
+    const counter = useRef(0);
+    
+    const imageLoaded=(count)=>{
+        console.log(loading,counter.current,count )
+        counter.current += 1;
+        if (counter.current >= count) {
+            setLoading(false);
+        }
     }
+
     useEffect(() => {
         setLoaded(false);
         axios.get(`https://api-staging.thewatch.com/api/users/0x03818E2b69Cb63eCD8763B9B0f275d7f8995aF1a/items`)
             .then((response) => {
-                const items= response.data.data.items
+                const items = response.data.data.items
                 for (let index = 0; index < items.length; index++) {
-                    items[index].id=index
+                    items[index].id = index
                 }
                 setCards(items);
                 applyFilter(response.data.data.items);
@@ -34,7 +42,10 @@ export default function (props) {
     async function applyFilter(cards) {
         let filteredCards;
         if (searchParams.get("filter") == "all" || searchParams.get("filter") == null) {
-            setFilteredCards(cards.map((item, index) => { return (<Card  key={index} id={index} {...item} />) }));   
+            filteredCards = cards.filter(card => {
+                return true
+            })
+            setFilteredCards(filteredCards.map((item, index) => { return (<Card key={index} id={index} {...item} onLoadImage={()=>imageLoaded(filteredCards.length)} />) }));
             return;
         }
         if (searchParams.get("filter") == "Units") {
@@ -59,18 +70,22 @@ export default function (props) {
                 })
             }
         }
-        setFilteredCards(filteredCards.map((item,index) => { return (<Card key={index} {...item} />) }));
+        setFilteredCards(filteredCards.map((item, index) => { return (<Card key={index} {...item} onLoadImage={()=>imageLoaded(filteredCards.length)}/>) }));
     }
     useEffect(() => {
         applyFilter(cards)
+        counter.current=0;
+        setLoading(true)
     }, [searchParams])
 
     return (
         <>
-            {loaded && <CardGrid cards={filteredCards} grid={props.grid} />}
-            {!loaded &&
-                <div className='middle'>
-                    <img src={loading} />
+            <div style={{ display: loading ? "none" : "block" }}>
+                {loaded && <CardGrid cards={filteredCards} grid={props.grid} />}
+            </div>
+            {(!loaded || loading) &&
+                <div className={`middle loading-div ${(!loaded || loading) && 'visible'}`}>
+                    <img src={loadingGIF} />
                 </div>}
         </>
     );
