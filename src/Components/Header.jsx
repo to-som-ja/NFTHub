@@ -4,7 +4,7 @@ import { useWeb3React } from "@web3-react/core";
 import Close from "../Icons/close_4.svg";
 import FrontierLogo from "../Icons/frontier_logo.svg";
 import { Link, useSearchParams } from "react-router-dom";
-import {CSSTransition} from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 
 
 function Header(props) {
@@ -90,6 +90,10 @@ function Header(props) {
           </ul>}
       </div>
       <div className="header-right">
+        {isMobile && !showMobileItems &&
+          <div className='header-mobile-header'>
+            <p>/ {activeHeader}</p>
+          </div>}
         {!isMobile && <div className="header-right-text" >
           {!smallScreen && <p className="header-right-text-p" >C:\OSXPHOENIX\PROGRAMS\PLAYER.EXE=</p>}
           <p className="header-right-text-p" style={{ color: "white" }} >{`${account.substring(0, 6)}...${account.substring(38)}`}</p>

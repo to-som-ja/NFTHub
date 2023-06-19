@@ -113,61 +113,79 @@
     width: 100%;
 }
 
-.loading-div{
+.loading-div {
     display: flex;
 }
 
 /* === Exit Transition ===*/
-.loading-transition-exit{
+.loading-transition-exit {
     opacity: 1;
     display: flex !important;
 }
-.loading-transition-exit-active{
+
+.loading-transition-exit-active {
     opacity: 0;
     transition: all 300ms ease-out;
 }
-.loading-transition-exit-done{
-    display: none !important; 
+
+.loading-transition-exit-done {
+    display: none !important;
 }
 
-.grid-transition-exit{
+.grid-transition-exit {
     opacity: 1;
-    display: none!important;
+    display: none !important;
 }
-.grid-transition-exit-active{
+
+.grid-transition-exit-active {
     opacity: 0;
     transition: all 500ms;
 }
-.grid-transition-exit-done{
-    display: none !important; 
+
+.grid-transition-exit-done {
+    display: none !important;
 }
+
 /* === Enter Transition ===*/
-.loading-transition-enter{
+.loading-transition-enter {
     display: flex !important;
     opacity: 0;
 }
-.loading-transition-enter-active{
+
+.loading-transition-enter-active {
     opacity: 1;
     transition: all 300ms ease-out;
 }
-.loading-transition-enter-done{
+
+.loading-transition-enter-done {
     display: flex !important;
 }
 
-.grid-transition-enter{
+.grid-transition-enter {
     opacity: 0;
     display: block !important;
 }
-.grid-transition-enter-active{
+
+.grid-transition-enter-active {
     opacity: 1;
-    transition: all 500ms ;
+    transition: all 500ms;
 }
-.grid-transition-enter-done{
+
+.grid-transition-enter-done {
     display: block !important;
 }
+
+.loading-div img {
+    width: 20%;
+}
+
 @media (max-width:767px) {
     .main-div-button {
         height: 3.5rem;
+    }
+
+    .loading-div img {
+        width: 50%;
     }
 
     .main-div-login {
