@@ -22,20 +22,54 @@
     font-family: 'D-DIN Exp';
     font-style: normal;
     font-weight: 700;
-    font-size: 13px;
-    line-height: 14px;
+    font-size: 0.813rem;
+    line-height: 0.875rem;
     letter-spacing: 0.2em;
 }
 
 .counter-mid {
     width: 2rem;
 }
+
 .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
-  }
+}
+
+@media (max-width:767px) {
+    .counter {
+        height: 3rem;
+    }
+
+    .counter-button {
+        width: 3rem;
+    }
+
+    .counter-mid {
+        width: 3rem;
+    }
+
+    .counter-button-img {
+        width: calc(100% / 3);
+    }
+
+    .counter-button-img-2 {
+        width: 1rem;
+    }
+
+    .counter-text {
+        font-size: 1rem;
+        line-height: 1.2rem;
+    }
+}

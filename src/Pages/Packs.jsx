@@ -231,31 +231,47 @@ export default function Packs() {
                         <div className='packs-mobile-stage1-header-div'></div>
                     </div>
                     <div className='packs-top middle'>
+                        <span className='packs-mobile-line'></span>
                         <span className='packs-big-circle'></span>
                         <span className='packs-small-circle'></span>
                         <img src={BlackBoxImg} className='packs-image noselect' />
                     </div>
-                    <div className='packs-mobile-stage1-footer'>
-                        <h1 className='packs-mobile-stage1-name'>{card.name}</h1>
-                        <Counter
-                            key={key}
-                            maxNumber={card == null ? 0 : card.quantity}
-                            onChange={(value) => {
-                                setOpenQuantity(value);
-                                console.log("onChange>", openQuantity);
-                            }} />
-                        <button className='packs-button-open' onClick={() => setOpeningState(1)}>
-                            <p className='text packs-text'>OPEN NOW</p>
-                            <img src={openLogo} />
-                        </button>
-                        <a  className='middle' href={card == null ? "" : `https://opensea.io/assets/ethereum/0x236672ed575e1e479b8e101aeeb920f32361f6f9/${card.tokenId}`} target="_blank" >
-                            <button className='packs-button-trade'>
-                                <p className='text packs-text'>TRADE NOW</p>
-                                <img src={Arrow} className="packs-arrow" />
+                    {openingState == 0 &&
+                        <div className='packs-mobile-stage1-footer'>
+                            <h1 className='packs-mobile-stage1-name'>{card.name}</h1>
+                            <Counter
+                                key={key}
+                                maxNumber={card == null ? 0 : card.quantity}
+                                onChange={(value) => {
+                                    setOpenQuantity(value);
+                                    console.log("onChange>", openQuantity);
+                                }} />
+                            <button className='packs-button-open' onClick={() => setOpeningState(1)}>
+                                <p className='text packs-text' >OPEN NOW</p>
+                                <img src={openLogo} />
                             </button>
-                        </a>
-                    </div>
-
+                            <a className='middle' href={card == null ? "" : `https://opensea.io/assets/ethereum/0x236672ed575e1e479b8e101aeeb920f32361f6f9/${card.tokenId}`} target="_blank" >
+                                <button className='packs-button-trade'>
+                                    <p className='text packs-text'>TRADE NOW</p>
+                                    <img src={Arrow} className="packs-arrow" />
+                                </button>
+                            </a>
+                        </div>}
+                    {openingState == 1 &&
+                        <div className='packs-bottom-confirm'>
+                            <div style={{ marginBottom: "1rem" }}>
+                                <h3 className='packs-confirm-h3'>WARNING</h3>
+                                <p className='packs-confirm-p'>THIS ACTION IS IRREVERSIBLE.</p>
+                            </div>
+                            <button className='packs-proceed-button' onClick={burnBoxes}>
+                                <img src={Check} style={{ marginRight: "0.8rem" }} />
+                                PROCEED
+                            </button>
+                            <button className='packs-cancel-button' onClick={() => setOpeningState(0)}>
+                                <img src={Cancel} style={{ marginRight: "0.8rem" }} />
+                                CANCEL
+                            </button>
+                        </div>}
                 </div>}
         </>
     )

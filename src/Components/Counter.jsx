@@ -31,14 +31,14 @@ export default function Counter(props) {
     return (
         <div className="counter">
             <div className="counter-button middle " onClick={minusClick}>
-                <img className="noselect" src={Minus} />
+                <img className="noselect counter-button-img" src={Minus} />
             </div>
             <div className="middle counter-mid">
                 <p className="counter-text">{number}</p>
             </div>
             <div className="counter-button middle" onClick={plusClick}>
-                <img src={Minus} className="noselect" />
-                <img src={Minus} className="noselect" style={{transform: "rotate(90deg)", position: "absolute"}}/>
+                <img src={Minus} className="noselect counter-button-img" />
+                <img src={Minus} className="noselect counter-button-img-2" style={{transform: "rotate(90deg)", position: "absolute"}}/>
             </div>
         </div>
     );
