@@ -141,7 +141,8 @@
     transition: 0.3s;
 
 }
-.packs-proceed-button:hover{
+
+.packs-proceed-button:hover {
     filter: invert(100%);
 }
 
@@ -159,12 +160,13 @@
     letter-spacing: 0.2em;
     transition: 0.3s;
 }
-.packs-cancel-button:hover{
+
+.packs-cancel-button:hover {
     filter: invert(100%);
     border: 1px solid rgba(255, 255, 255, 0.13);
 }
 
-.packs-confirm-h3{
+.packs-confirm-h3 {
     font-family: 'D-DIN Exp';
     font-style: normal;
     font-weight: 700;
@@ -173,7 +175,7 @@
     letter-spacing: 0.2em;
 }
 
-.packs-confirm-p{
+.packs-confirm-p {
     font-family: 'D-DIN Exp';
     font-style: normal;
     font-weight: 400;
@@ -181,8 +183,118 @@
     line-height: 0.688rem;
     letter-spacing: 0.1em;
 }
-.packs-grid-content{
+
+.packs-grid-content {
     padding-inline: 2rem;
-    padding-top: 2rem ;
+    padding-top: 2rem;
     height: 100%
+}
+
+.packs-mobile-stage0-main {
+    padding-inline: 2rem;
+    padding-top: 6rem;
+}
+
+.packs-mobile-stage1 {
+    height: 100%;
+    overflow: hidden;
+}
+
+.packs-mobile-stage1-header {
+    height: 4rem;
+}
+
+.packs-mobile-stage1-back {
+    width: 4rem;
+    height: 100%;
+    background-color: white;
+}
+
+.packs-mobile-stage1-header-div {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.packs-mobile-stage1-footer {
+    background-color: white;
+    z-index: 999;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.packs-mobile-stage1-name {
+    font-family: 'D-DIN Exp';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.625rem;
+    letter-spacing: 0.2em;
+    padding-top: 2rem;
+    padding-left: 3rem;
+}
+
+.packs-mobile-stage1-back:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width:767px) {
+    .packs-top {
+        height: calc(100% - 25rem)
+    }
+
+    .packs-big-circle {
+        width: 120%;
+    }
+
+    .packs-small-circle {
+        width: 60%;
+    }
+
+    .packs-image {
+        width: 90%;
+    }
+
+    .packs-button-open {
+        width: 90%;
+        padding: 0;
+        margin-left: 5%;
+        border: 1px solid rgba(0, 0, 0, 0.65);
+        margin-block: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem;
+    }
+
+    .packs-text {
+        margin-left: 2rem;
+    }
+
+    .packs-button-open img {
+        margin-right: 2rem;
+    }
+
+    .packs-button-trade {
+        width: 90%;
+        padding: 0;
+        border: 1px solid rgba(0, 0, 0, 0.85);
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 4rem;
+    }
+
+    .packs-button-open:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .packs-arrow {
+        height: 27%;
+        margin-right: 2rem;
+    }
+
+    .packs-button-trade:hover {
+        border: 1px solid rgba(255, 255, 255, 0.65);
+    }
 }

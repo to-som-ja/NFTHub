@@ -10,6 +10,7 @@
     width: 2.5rem;
     transition: 0.4s;
     background-color: #FFFFFF;
+    z-index: 999;
 }
 
 .counter-button:hover {
